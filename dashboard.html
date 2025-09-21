@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartupSage Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+
+    /* Card wrapper for sections */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      margin-top: 0;
+      border-left: 5px solid #4a90e2;
+      padding-left: 10px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    /* Chat box */
+    #chat-box {
+      border-radius: 10px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+      background: #fdfdfd;
+      padding: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    #chat-box::-webkit-scrollbar {
+      width: 8px;
+    }
+    #chat-box::-webkit-scrollbar-thumb {
+      background-color: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+
+    /* Chat messages */
+    .chat-message {
+      padding: 8px 12px;
+      margin: 6px 0;
+      border-radius: 12px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .chat-message.ai {
+      background-color: #e1f5fe;
+      align-self: flex-start;
+    }
+    .chat-message.user {
+      background-color: #4a90e2;
+      color: white;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    /* User input */
+    #userInput {
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: calc(100% - 110px);
+      transition: border-color 0.2s;
+    }
+    #userInput:focus {
+      border-color: #4a90e2;
+      outline: none;
+    }
+
+    /* Buttons */
+    button, #pdfUploadBtn, #sendBtn {
+      border-radius: 8px;
+      background-color: #4a90e2;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      border: none;
+    }
+    button:hover, #pdfUploadBtn:hover, #sendBtn:hover {
+      background-color: #357ABD;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #f0f0f0;
+    }
+
+    /* Chat input wrapper */
+    .chat-input-wrapper {
+      display: flex;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>StartupSage Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <!-- Deal Note Summary -->
+    <div class="card">
+      <h2>Deal Note Summary</h2>
+      <p><strong>Problem:</strong> Low financial literacy among youth</p>
+      <p><strong>Solution:</strong> AI-powered micro-learning app</p>
+      <p><strong>Market:</strong> 50M potential users in India</p>
+      <p><strong>Risks:</strong> Competition from existing EdTech apps</p>
+    </div>
+
+    <!-- Benchmark Comparison -->
+    <div class="card">
+      <h2>Benchmark Comparison</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Startup</th>
+            <th>Sector Avg</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ARR</td>
+            <td>$1M</td>
+            <td>$2.5M</td>
+          </tr>
+          <tr>
+            <td>Growth</td>
+            <td>25%</td>
+            <td>20%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Upload PDF -->
+    <div class="card">
+      <h2>Upload Pitch Deck (PDF)</h2>
+      <input type="file" id="pdfFile" accept=".pdf">
+      <button id="pdfUploadBtn">Upload PDF</button>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="card">
+      <h2>Ask the AI Analyst</h2>
+      <div id="chat-box"></div>
+      <div class="chat-input-wrapper">
+        <input type="text" id="userInput" placeholder="Type your question here...">
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
